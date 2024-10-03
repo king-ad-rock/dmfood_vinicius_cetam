@@ -1,39 +1,36 @@
 package br.com.cetam.dmfood.domain.cliente;
 
-import br.com.cetam.dmfood.domain.endereco.DadosEndereco;
 import br.com.cetam.dmfood.domain.endereco.Endereco;
-import br.com.cetam.dmfood.domain.usuario.Usuario;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
-
 @Data
+@Entity
 @Table(name = "cliente")
-@Entity(name = "Cliente")
-public class Cliente extends Usuario {
+public class Cliente {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
-    private String rg;
-    private String cpf;
     private String email;
     private String telefone;
+    private String cpf;
+
+    @Embedded // indica no banco de dados que essa classe Endereco faz parte da mesma tabela de Paciente
+    private Endereco endereco;
 
     private Boolean ativo;
 
-    private Endereco endereco;
+    public Cliente() {}
 
-    public Cliente() {
-    }
-
-    public Cliente(DadosCadastroCliente dados){
-        this.ativo = true;
-        this.cpf = dados.cpf();
-        this.rg = dados.rg();
+    public Cliente(DadosCadastroCliente dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
+        this.cpf = dados.cpf();
         this.endereco = new Endereco(dados.endereco());
+        this.ativo = true;
     }
-
 }
