@@ -1,7 +1,7 @@
 package br.com.cetam.dmfood.service;
 
-import br.com.cetam.dmfood.domain.usuario.DadosListaUsuario;
-import br.com.cetam.dmfood.domain.usuario.DadosUsuarioCadastro;
+//import br.com.cetam.dmfood.domain.usuario.DadosListaUsuario;
+//import br.com.cetam.dmfood.domain.usuario.DadosUsuarioCadastro;
 import br.com.cetam.dmfood.domain.usuario.Usuario;
 import br.com.cetam.dmfood.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario cadastrarUsuario(DadosUsuarioCadastro dados) {
-        Usuario usuario = new Usuario(dados);
-        return usuarioRepository.save(usuario);
-    }
-
-
-    public List<DadosListaUsuario> listarUsuarios() {
-    }
+//    public Usuario cadastrarUsuario(DadosUsuarioCadastro dados) {
+//        Usuario usuario = new Usuario(dados);
+//        return usuarioRepository.save(usuario);
+//    }
+//
+//
+//    public List<DadosListaUsuario> listarUsuarios() {
+//    }
 }

@@ -7,7 +7,8 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-@Entity
+@Entity (name="Venda")
+@Table(name="vendas")
 public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +21,13 @@ public class Venda {
     @ManyToOne
     @JoinColumn(name="produtoId")
     private Produto produto;
+
+    public Venda(){}
+
+    public Venda(DadosCadastroVenda dados){
+        this.quantidade = dados.quantidade();
+        this.valor = dados.valor();
+        this.total = dados.total();
+        this.dataVenda = dados.dataVenda();
+    }
 }
